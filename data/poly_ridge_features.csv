@@ -1,0 +1,16 @@
+Feature,Coefficient
+avg_price,-20.387618537922087
+weekday,9.961631577405797
+discount_percent,9.56779851221275
+rating,9.19377717849404
+weekday^2,6.82358865127826
+ad_status^2,5.3178430653795195
+ad_status,3.517333796012055
+holiday_event^2,3.48693988637144
+avg_price holiday_event,-1.5827807398836613
+avg_price ad_status,-1.5709735988198932
+avg_price weekday,-1.3464092274950656
+avg_price discount_percent,-1.3217327543944204
+holiday_event,1.1247893104613356
+ad_status holiday_event,0.9311105120641398
+weekday holiday_event,0.8033865722506462
