@@ -4,7 +4,7 @@ A data analysis project exploring product trends, pricing dynamics, customer sen
 
 ---
 
-## 🎯 Project Intent
+## Project Intent
 
 This project combines analytical depth with practical presentation. While the full technical report details the complete workflow — including data preparation, exploratory analysis, natural language processing, and predictive modeling — the accompanying dashboard offers a **concise, interactive overview** of the key insights and results.
 
@@ -12,7 +12,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 1. **Data Preparation**  
    - Data cleaning and transformation  
@@ -45,7 +45,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - **Languages**: Python  
 - **Data Processing**: pandas, numpy, re  
@@ -57,7 +57,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ---
 
-## 📊 Sample Visuals
+## Sample Visuals
 
 <details>
 <summary>Click to expand</summary>
@@ -72,7 +72,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ---
 
-## 📈 Results Summary
+## Results Summary
 
 - Identified subcategories with significant mismatches between star ratings and review sentiment  
 - Demonstrated clear patterns in review volume and satisfaction trends  
@@ -81,7 +81,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 > **🔗 [Streamlit App Link – Try It Live](#)** *(URL wheb i set it io)*  
 > Use the dashboard to explore the data and predict sales based on your inputs.
