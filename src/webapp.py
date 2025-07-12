@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
 from webapp_utlities import (load_data, plot_products_by_subcategory, plot_distribuion_of_reviews_by_rating, plot_top10_most_review_products,
                              distribution_of_experience_related_feedback, distribution_of_size_related_feedback, normalized_size_feedback_by_product_category,
                              average_rating_by_category, total_variants_and_products, total_variants_and_products_dumbell, avg_price_by_product_category,
@@ -14,8 +15,15 @@ st.set_page_config(page_title="Project Dashboard", layout="wide")
 df_main, df_variants, df_reviews, mismatch_df, aspects_df, shoe_aspects_df, topic_summary_df, poly_ridge_prediction_df, random_forest_prediction_df, xgboost_prediction_df, poly_ridge_features, random_forest_features, xgboost_features = load_data()
 
 # Header
-st.title("E-commerce Analysis Dashboard")
-st.markdown("This dashboard summarizes EDA, NLP, and predictive modeling.")
+st.title("E-Commerce Product Data, Reviews & Sales Analysis Dashboard")
+
+st.markdown(
+    """
+    Explore interactive insights into product trends, customer sentiment, and sales predictions.
+    Navigate through detailed exploratory analysis, natural language processing of reviews, 
+    and advanced predictive models — all designed to support data-driven decision-making.
+    """
+)
 # Eda Header
 st.header("1. Exploratory Data Analysis (EDA)")
 st.write("Disclaimer: All visualizations in this project were created using Plotly to provide interactive exploration capabilities (e.g., zoom, tooltip, filtering). In certain plots, a logarithmic scale was applied to the y-axis or x-axis to improve clarity when displaying data with large value disparities across categories.")
@@ -247,6 +255,12 @@ st.markdown("---")
 
 # 6 ABSA
 st.header("2.6 Aspect Based Sentiment Analysis")
+st.info(
+    "**Understanding Aspect-Based Sentiment Analysis (ABSA):** "
+    "ABSA breaks down customer reviews to identify sentiment about specific product features or aspects. "
+    "Instead of just knowing if a review is positive or negative overall, it shows how customers feel about particular parts, "
+    "like price, quality, or delivery, providing more detailed insights."
+)
 # 6.1 Main aspects
 st.subheader("2.6.1 Detailed Customer Sentiment by Aspect")
 col1, col2 = st.columns(2) 
@@ -286,6 +300,11 @@ st.markdown("---")
 
 # 7 BERTopic
 st.header("2.7 Detailed Customer Sentiment & Key Discussion Themes")
+st.info(
+    "**Understanding BERTopic:** "
+    "BERTopic is a technique that groups customer reviews into topics based on the themes or subjects they discuss. "
+    "This helps identify common issues, preferences, or features customers talk about without manually reading all reviews."
+)
 fig = bertopic_plot(topic_summary_df)
 fig = plot_preset(fig)
 fig.update_layout(
@@ -311,6 +330,16 @@ BERTopic analysis further uncovers key themes: most topics are overwhelmingly po
 """)
 st.markdown("---")
 
+st.header("Predictive Modeling: Sales Forecasting")
+
+st.subheader("Understanding Key Drivers Behind Sales and Making Accurate Predictions")
+
+st.info(
+    "**Understanding Predictive Modeling:** "
+    "Predictive modeling uses historical data to forecast future outcomes. "
+    "Here, the model estimates expected sales based on product features, pricing, and other factors, "
+    "helping to anticipate demand and make informed business decisions."
+)
 st.header("Model Performance: Actual vs. Predicted Sales")
 col1, col2, col3 = st.columns(3)
 
@@ -401,7 +430,9 @@ st.write("""
      
 """)
 # XGBoost model
-xgb_m = joblib.load('xgboost.pkl')
+current_working_directory = Path.cwd()
+path = (current_working_directory / "../../models/xgboost.pkl").resolve()
+xgb_m = joblib.load(path)
 
 uploaded_file = st.file_uploader("Upload CSV file for prediction", type=["csv"])
 
