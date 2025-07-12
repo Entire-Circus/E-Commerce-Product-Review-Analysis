@@ -24,19 +24,19 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
    - Pricing and popularity trends  
    - Rating distribution and category-level performance
 
-3. **Text Analysis**  
-   - Sentiment classification using BERT  
-   - Topic modeling and aspect-based sentiment analysis  
+3. **Text Analysis (NLP)**  
+   - Sentiment classification using BERT
    - Alignment of review sentiment with rating data
+   - Aspect-based sentiment analysis and topic modeling with BERTopic
 
 4. **Predictive Modeling**  
    - Feature selection and preprocessing  
-   - Model training and evaluation (Linear Regression, Ridge, Random Forest, etc.)  
-   - Performance comparison and model selection
+   - Model training and evaluation (Poly Ridge, Random Forest, XGBoost)  
+   - Feature evaluation and sales prediction
 
 5. **Interactive Dashboard**  
    - Built with Streamlit  
-   - Visual summaries of EDA and sentiment analysis  
+   - Visual summaries of EDA and NLP and Predictive Modeling
    - Real-time sales prediction using user-defined inputs
 
 6. **Deployment**  
