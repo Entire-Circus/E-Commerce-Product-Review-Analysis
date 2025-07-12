@@ -29,7 +29,10 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
    - Alignment of review sentiment with rating data
    - Aspect-based sentiment analysis and topic modeling with BERTopic
 
-4. **Modeling **  
+4. **Predictive Modeling**  
+   - Feature selection and preprocessing  
+   - Model training and evaluation (Poly Ridge, Random Forest, XGBoost)  
+   - Performance comparison and model selection
 
 5. **Interactive Dashboard**  
    - Built with Streamlit  
