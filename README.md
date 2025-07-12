@@ -9,7 +9,7 @@ Data analysis project exploring product trends, pricing, and review sentiment in
 
 3. **Text Analysis**  
 
-4. **Modeling **  
+4. **Modeling**  
 
 5. **Dashboard**  
 
