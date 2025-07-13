@@ -10,32 +10,31 @@ import streamlit as st
 from data_cleaning_and_utilities import get_earth_colorscale
 # Load cleaned data
 def load_data():
-    current_working_directory = Path.cwd()
-    path = (current_working_directory / "../../data/cleaned_main.csv").resolve()
+    path = "../data/cleaned_main.csv"
     df_main = pd.read_csv(path)
-    path = (current_working_directory / "../../data/cleaned_variants.csv").resolve()
+    path = "../data/cleaned_variants.csv"
     df_variants = pd.read_csv(path)
-    path = (current_working_directory / "../../data/df_reviews_final.csv").resolve()
+    path = "../data/df_reviews_final.csv"
     df_reviews = pd.read_csv(path)
-    path = (current_working_directory / "../../data/BERT_mismatch_data.csv").resolve()
+    path = "../data/BERT_mismatch_data.csv"
     mismatch_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/main_aspects.csv").resolve()
+    path = "../data/main_aspects.csv"
     aspects_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/shoe_aspects.csv").resolve()
+    path = "../data/shoe_aspects.csv"
     shoe_aspects_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/BERTopic.csv").resolve()
+    path = "../data/BERTopic.csv"
     topic_summary_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/prediction_poly_ridge.csv").resolve()
+    path = "../data/prediction_poly_ridge.csv"
     poly_ridge_prediction_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/prediction_random_forest.csv").resolve()
+    path = "../data/prediction_random_forest.csv"
     random_forest_prediction_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/prediction_xgboost.csv").resolve()
+    path = "../data/prediction_xgboost.csv"
     xgboost_prediction_df = pd.read_csv(path)
-    path = (current_working_directory / "../../data/poly_ridge_features.csv").resolve()
+    path = "../data/poly_ridge_features.csv"
     poly_ridge_features = pd.read_csv(path)
-    path = (current_working_directory / "../../data/random_forest_features.csv").resolve()
+    path = "../data/random_forest_features.csv"
     random_forest_features = pd.read_csv(path)
-    path = (current_working_directory / "../../data/xgboost_features.csv").resolve()
+    path = "../data/xgboost_features.csv"
     xgboost_features = pd.read_csv(path)
     return (df_main, df_variants, df_reviews, mismatch_df, aspects_df, shoe_aspects_df, topic_summary_df, 
             poly_ridge_prediction_df, random_forest_prediction_df, xgboost_prediction_df, poly_ridge_features, random_forest_features, xgboost_features)

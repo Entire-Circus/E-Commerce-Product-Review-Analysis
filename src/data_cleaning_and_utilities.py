@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 import numpy as np
-from pathlib import Path
 from plotly.colors import get_colorscale
 
 ### Data cleaning and preparation
@@ -13,9 +12,7 @@ from plotly.colors import get_colorscale
 # - Normalize numeric and text fields
 
 # Load raw data
-current_working_directory = Path.cwd()
-relative_path_to_db = Path("../../data/product_data.db")
-path = (current_working_directory / relative_path_to_db).resolve()
+path = ("../data/product_data.db")
 conn = sqlite3.connect(path)
 df_main = pd.read_sql("SELECT * FROM product_main_data", conn)
 df_variants = pd.read_sql("SELECT * FROM product_variants_data", conn)
@@ -151,11 +148,11 @@ subcat_index = df_variants.columns.get_loc("subcategory")
 df_variants.insert(subcat_index, "main_category", df_variants.pop("main_category"))
 
 # Export for use in streamlit
-output_path = (current_working_directory / "../../data/cleaned_main.csv").resolve()
+output_path = "../data/cleaned_main.csv"
 df_main.to_csv(output_path, index=False)
-output_path = (current_working_directory / "../../data/cleaned_variants.csv").resolve()
+output_path = "../data/cleaned_variants.csv"
 df_variants.to_csv(output_path, index=False)
-output_path = (current_working_directory / "../../data/cleaned_reviews.csv").resolve()
+output_path = "../data/cleaned_reviews.csv"
 df_reviews.to_csv(output_path, index=False)
 
 
