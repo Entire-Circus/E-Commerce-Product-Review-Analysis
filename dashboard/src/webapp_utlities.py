@@ -41,7 +41,6 @@ def plot_preset(fig):
 # Load cleaned data
 def load_data():
     base_path = Path(__file__).parent.parent / "data"
-    models_path = Path(__file__).parent.parent / "models"
 
     df_main = pd.read_csv(base_path / "cleaned_main.csv")
     df_variants = pd.read_csv(base_path / "cleaned_variants.csv")
@@ -55,7 +54,7 @@ def load_data():
     xgboost_prediction_df = pd.read_csv(base_path / "prediction_xgboost.csv")
     poly_ridge_features = pd.read_csv(base_path / "poly_ridge_features.csv")
     random_forest_features = pd.read_csv(base_path / "random_forest_features.csv")
-    xgboost_features = pd.read_csv(models_path / "xgboost_features.csv")
+    xgboost_features = pd.read_csv(base_path / "xgboost_features.csv")
 
     return (
         df_main, df_variants, df_reviews, mismatch_df, aspects_df, shoe_aspects_df,

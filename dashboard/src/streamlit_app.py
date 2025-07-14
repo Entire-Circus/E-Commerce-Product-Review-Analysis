@@ -429,8 +429,8 @@ st.write("""
      
 """)
 # XGBoost model
-current_working_directory = Path.cwd()
-path = (current_working_directory / "../../models/xgboost.pkl").resolve()
+models_path = Path(__file__).parent.parent / "models"
+path = (models_path / "xgboost.pkl")
 xgb_m = joblib.load(path)
 
 uploaded_file = st.file_uploader("Upload CSV file for prediction", type=["csv"])
