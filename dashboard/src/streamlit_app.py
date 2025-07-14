@@ -471,8 +471,6 @@ subcategory_options = [
     "Accessories-fashion-jewelry"
 ]
 
-subcategory = st.selectbox("Subcategory", options=subcategory_options)
-
 with st.form("input_form"):
     subcategory = st.selectbox("Subcategory", options=subcategory_options)
     avg_price = st.number_input("Average Price", min_value=0, step=1)
