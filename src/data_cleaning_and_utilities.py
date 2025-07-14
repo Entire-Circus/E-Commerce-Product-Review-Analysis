@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import numpy as np
 from plotly.colors import get_colorscale
+from pathlib import Path
 
 ### Data cleaning and preparation
 # We load raw product and variant data from an SQLite database. Then, we:
@@ -12,7 +13,7 @@ from plotly.colors import get_colorscale
 # - Normalize numeric and text fields
 
 # Load raw data
-path = ("../data/product_data.db")
+path = (Path(__file__).parent / "../data/product_data.db").resolve()
 conn = sqlite3.connect(path)
 df_main = pd.read_sql("SELECT * FROM product_main_data", conn)
 df_variants = pd.read_sql("SELECT * FROM product_variants_data", conn)
