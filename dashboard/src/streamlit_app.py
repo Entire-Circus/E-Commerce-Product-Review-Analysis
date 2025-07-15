@@ -428,6 +428,28 @@ st.write("""
     2.  **Single Prediction (Manual Input):** Manually input specific values for each sales driver (e.g., average price, whether it's a holiday, discount percentage) directly into the dashboard. This allows for quick, on-the-fly forecasts for individual products or hypothetical scenarios to assess the potential impact of changing specific variables.
      
 """)
+# Subcategory dropdown
+subcategory_options = [
+    "Womens-sandals", "Womens-heels", "Womens-sneakers", "Womens-loafers-flats",
+    "Womens-boots-booties", "Womens-platforms", "Womens-wedges", "Womens-slip-on-slides",
+    "Womens-mules", "Mens-dress-shoes", "Mens-sneakers", "Mens-boots", "Mens-loafers",
+    "Mens-sandals", "Mens-casual", "Kids-mini-me", "Kids-special-occasion-shoes",
+    "Kids-flower-girl-shoes", "Kids-pretty-in-pink", "Kids-sporty-chic", "Kids-beach-days",
+    "Handbags-crossbody-bags", "Handbags-clutches", "Handbags-belt-bags",
+    "Handbags-wallets-charms", "Clothing-dresses", "Clothing-tops-shirts",
+    "Clothing-bottoms", "Clothing-jackets-coats", "Clothing-blazers",
+    "Clothing-faux-leather", "Accessories-socks-tights", "Accessories-sunglasses",
+    "Accessories-hats-gloves-scarves", "Accessories-shoe-care",
+    "Accessories-fashion-jewelry"
+]
+st.markdown(
+    "**Instructions:**\n"
+    "- Upload a CSV with columns: `subcategory`, `avg_price`, `rating`, `month`, `weekday`, `discount_percent`, `ad_status`, `holiday_event`.\n"
+    "- Use the dropdown below to check valid `subcategory` values.\n"
+    "- Make sure your CSV only contains one subcategory and it matches one from the list.\n"
+    "- Example row: `Womens-sandals, 100, 4, 6, 6, 10, 0, 1`"
+)
+subcategory = st.selectbox("Subcategory", options=subcategory_options)
 # XGBoost model
 models_path = Path(__file__).parent.parent / "models"
 path = (models_path / "xgboost.pkl")
@@ -456,30 +478,15 @@ if uploaded_file is not None:
 
 st.header("Manual Input for Prediction")
 
-# Subcategory dropdown
-subcategory_options = [
-    "Womens-sandals", "Womens-heels", "Womens-sneakers", "Womens-loafers-flats",
-    "Womens-boots-booties", "Womens-platforms", "Womens-wedges", "Womens-slip-on-slides",
-    "Womens-mules", "Mens-dress-shoes", "Mens-sneakers", "Mens-boots", "Mens-loafers",
-    "Mens-sandals", "Mens-casual", "Kids-mini-me", "Kids-special-occasion-shoes",
-    "Kids-flower-girl-shoes", "Kids-pretty-in-pink", "Kids-sporty-chic", "Kids-beach-days",
-    "Handbags-crossbody-bags", "Handbags-clutches", "Handbags-belt-bags",
-    "Handbags-wallets-charms", "Clothing-dresses", "Clothing-tops-shirts",
-    "Clothing-bottoms", "Clothing-jackets-coats", "Clothing-blazers",
-    "Clothing-faux-leather", "Accessories-socks-tights", "Accessories-sunglasses",
-    "Accessories-hats-gloves-scarves", "Accessories-shoe-care",
-    "Accessories-fashion-jewelry"
-]
-
 with st.form("input_form"):
     subcategory = st.selectbox("Subcategory", options=subcategory_options)
     avg_price = st.number_input("Average Price", min_value=0, step=1)
     rating = st.slider("Rating", min_value=1, max_value=5, step=1)
-    month = st.slider("Month", min_value=1, max_value=4, step=1)
+    month = st.slider("Month", min_value=1, max_value=12, step=1)
     weekday = st.slider("Weekday", min_value=0, max_value=6, step=1)
     discount_percent = st.slider("Discount Percent", min_value=1, max_value=100, step=1)
-    ad_status = st.checkbox("Ad Status (True=1, False=0)")
-    holiday_event = st.checkbox("Holiday Event (True=1, False=0)")
+    ad_status = st.checkbox("Ad Status")
+    holiday_event = st.checkbox("Holiday Event")
 
     submitted = st.form_submit_button("Predict")
 
