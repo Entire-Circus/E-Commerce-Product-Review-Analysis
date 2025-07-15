@@ -25,12 +25,13 @@ st.markdown(
 )
 # Eda Header
 st.header("1. Exploratory Data Analysis (EDA)")
-st.write("Disclaimer: All visualizations in this project were created using Plotly to provide interactive exploration capabilities (e.g., zoom, tooltip, filtering). In certain plots, a logarithmic scale was applied to the y-axis or x-axis to improve clarity when displaying data with large value disparities across categories.")
+st.write("""Disclaimer: All visualizations in this project up to predictive modeling were created using Plotly to provide interactive exploration capabilities (e.g., zoom, tooltip, filtering). A logarithmic scale was applied to improve clarity when visualizing data with large value disparities across groups. 
+    "Log scales show relative differences rather than absolute, making it easier to interpret patterns in skewed data. """)
 st.markdown("---")
 
 # 1. Unique products with total category (and variants)
 st.header("1.1 Product Catalog Depth & Breadth") 
-st.subheader("Aplliead log scale on Product Amount")
+st.info("Apllied log scale on Product Amount")
 col1, col2 = st.columns(2)
 with col1:
     fig = total_variants_and_products(df_variants)
@@ -329,7 +330,7 @@ BERTopic analysis further uncovers key themes: most topics are overwhelmingly po
 """)
 st.markdown("---")
 
-st.header("Predictive Modeling: Sales Forecasting")
+st.header("3. Predictive Modeling: Sales Forecasting")
 
 st.subheader("Understanding Key Drivers Behind Sales and Making Accurate Predictions")
 
@@ -339,7 +340,7 @@ st.info(
     "Here, the model estimates expected sales based on product features, pricing, and other factors, "
     "helping to anticipate demand and make informed business decisions."
 )
-st.header("Model Performance: Actual vs. Predicted Sales")
+st.header("3.1 Model Performance: Actual vs. Predicted Sales")
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -363,7 +364,7 @@ with col3:
     st.markdown("**Insight:** XGBoost exhibits the highest predictive accuracy among the models, providing exceptionally precise sales forecasts critical for strategic business decisions.")
     st.markdown("---")
 
-st.header("Key Sales Drivers: Feature Importance Analysis")
+st.header("3.2 Key Sales Drivers: Feature Importance Analysis")
 
 left, center, right = st.columns([1, 2, 1])
 
@@ -399,12 +400,12 @@ data = {
 }
 
 metrics_df = pd.DataFrame(data)
-st.subheader("Comparative Model Performance Metrics") # Adjusted subheader
+st.subheader("3.3 Comparative Model Performance Metrics") # Adjusted subheader
 st.dataframe(metrics_df, height=200, width=400)
 st.markdown("**Insight:** XGBoost demonstrates superior performance across all evaluation metrics (highest R² and lowest errors), making it the most reliable choice for sales forecasting within this analysis.")
 
 st.write("---") # Separator for new section
-st.header("Overall Business Insights from Predictive Modeling")
+st.header("3.4 Overall Business Insights from Predictive Modeling")
 st.write("""
     Based on our predictive modeling analysis, several critical insights emerge for optimizing sales strategies:
 

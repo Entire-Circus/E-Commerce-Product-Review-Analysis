@@ -648,79 +648,105 @@ def bertopic_plot(df):
 
 def poly_ridge_prediction(df):
     fig, ax = plt.subplots(figsize=(8, 8))
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
     sns.scatterplot(x=df["Actual Sales"], y=df["Predicted Sales"], ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
             [df["Actual Sales"].min(), df["Actual Sales"].max()],
             "r--", label="Perfect Prediction (y=x)")
-    ax.set_xlabel("Actual Sales")
-    ax.set_ylabel("Predicted Sales")
-    ax.set_title("Poly Ridge Regression: Actual vs Predicted Sales")
+
+    ax.set_xlabel("Actual Sales", color="#f0f0f0")
+    ax.set_ylabel("Predicted Sales", color="#f0f0f0")
+    ax.set_title("Poly Ridge Regression: Actual vs Predicted Sales", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
+    ax.grid(True, color="#444444")
     ax.legend()
-    ax.grid(True)
     fig.tight_layout()
     st.pyplot(fig)
-
 
 def random_forest_prediction(df):
     fig, ax = plt.subplots(figsize=(6, 6))
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
             [df["Actual Sales"].min(), df["Actual Sales"].max()],
             "r--", label="Perfect Prediction")
-    ax.set_xlabel("Actual Sales")
-    ax.set_ylabel("Predicted Sales")
-    ax.set_title("Random Forest: Actual vs Predicted Sales")
+
+    ax.set_xlabel("Actual Sales", color="#f0f0f0")
+    ax.set_ylabel("Predicted Sales", color="#f0f0f0")
+    ax.set_title("Random Forest: Actual vs Predicted Sales", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
+    ax.grid(True, color="#444444")
     ax.legend()
-    ax.grid(True)
     fig.tight_layout()
     st.pyplot(fig)
 
-
 def xgboost_prediction(df):
     fig, ax = plt.subplots(figsize=(8, 8))
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
             [df["Actual Sales"].min(), df["Actual Sales"].max()],
             "r--", label="Perfect Prediction")
-    ax.set_xlabel("Actual Sales")
-    ax.set_ylabel("Predicted Sales")
-    ax.set_title("XGBoost with Native Categorical: Actual vs Predicted Sales")
+
+    ax.set_xlabel("Actual Sales", color="#f0f0f0")
+    ax.set_ylabel("Predicted Sales", color="#f0f0f0")
+    ax.set_title("XGBoost with Native Categorical: Actual vs Predicted Sales", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
+    ax.grid(True, color="#444444")
     ax.legend()
-    ax.grid(True)
     fig.tight_layout()
     st.pyplot(fig)
 
 def plot_poly_ridge_features(df):
     fig, ax = plt.subplots(figsize=(12, 6))
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
     ax.barh(df['Feature'], df['Coefficient'], color='skyblue')
-    ax.set_xlabel("Model Coefficient")
-    ax.set_title("Feature Importances (Poly Ridge Regression)")
+    ax.set_xlabel("Model Coefficient", color="#f0f0f0")
+    ax.set_title("Feature Importances (Poly Ridge Regression)", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
     ax.invert_yaxis()
+    ax.grid(True, color="#444444")
     fig.tight_layout()
     st.pyplot(fig)
 
 def plot_random_forest_features(df):
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.barh(df['feature'], df['importance'], color='skyblue')  # Use explicit columns
-    ax.set_title("Feature Importances (Random Forest)")
-    ax.set_xlabel("Importance")
-    ax.set_ylabel("Feature")
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
+    ax.barh(df['feature'], df['importance'], color='skyblue')
+    ax.set_title("Feature Importances (Random Forest)", color="#f0f0f0")
+    ax.set_xlabel("Importance", color="#f0f0f0")
+    ax.set_ylabel("Feature", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
+    ax.invert_yaxis()
+    ax.grid(True, color="#444444")
     fig.tight_layout()
     st.pyplot(fig)
 
 def plot_xg_boost_features(df):
-    fig, ax = plt.subplots(figsize=(12, 6))  
+    fig, ax = plt.subplots(figsize=(12, 6))
+    fig.patch.set_facecolor("#0e1117")
+    ax.set_facecolor("#1e1e1e")
+
     ax.barh(df['feature'], df['importance'], color='skyblue')
     ax.set_xscale('log')
-
-    # Set tick values
     ax.set_xticks([100, 250, 500, 1000, 2000, 5000, 10000, 25000, 50000, 100000, 200000, 400000, 700000])
-    ax.get_xaxis().set_major_formatter(plt.ScalarFormatter())  
-    # Labels and title
-    ax.set_xlabel("Feature Importance")
-    ax.set_ylabel("Feature Name")
-    ax.set_title("Feature Importances (XGBoost)")
-    ax.invert_yaxis()
+    ax.get_xaxis().set_major_formatter(plt.ScalarFormatter())
 
-    plt.tight_layout()
-    st.pyplot(fig)  
+    ax.set_xlabel("Feature Importance", color="#f0f0f0")
+    ax.set_ylabel("Feature Name", color="#f0f0f0")
+    ax.set_title("Feature Importances (XGBoost)", color="#f0f0f0")
+    ax.tick_params(colors="#f0f0f0")
+    ax.invert_yaxis()
+    ax.grid(True, color="#444444")
+    fig.tight_layout()
+    st.pyplot(fig)
