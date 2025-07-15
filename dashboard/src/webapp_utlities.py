@@ -660,7 +660,7 @@ def poly_ridge_prediction(df):
     ax.set_ylabel("Predicted Sales", color="#f0f0f0")
     ax.set_title("Poly Ridge Regression: Actual vs Predicted Sales", color="#f0f0f0")
     ax.tick_params(colors="#f0f0f0")
-    ax.grid(True, color="#444444")
+    ax.grid(True, color="#535353")
     ax.legend()
     fig.tight_layout()
     st.pyplot(fig)
@@ -668,7 +668,7 @@ def poly_ridge_prediction(df):
 def random_forest_prediction(df):
     fig, ax = plt.subplots(figsize=(6, 6))
     fig.patch.set_facecolor("#0e1117")
-    ax.set_facecolor("#1e1e1e")
+    ax.set_facecolor("#5a5a5a")
 
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
@@ -679,7 +679,7 @@ def random_forest_prediction(df):
     ax.set_ylabel("Predicted Sales", color="#f0f0f0")
     ax.set_title("Random Forest: Actual vs Predicted Sales", color="#f0f0f0")
     ax.tick_params(colors="#f0f0f0")
-    ax.grid(True, color="#444444")
+    ax.grid(True, color="#7E7E7E")
     ax.legend()
     fig.tight_layout()
     st.pyplot(fig)
