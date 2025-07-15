@@ -83,7 +83,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ## Live Demo
 
-> **🔗 [Streamlit App Link – Try It Live](#)** *(URL wheb i set it io)*  
+> **[Streamlit App Link – Try It Live](https://e-commerce-analysis-dashboard.onrender.com)**
 > Use the dashboard to explore the data and predict sales based on your inputs.
 
 ---
