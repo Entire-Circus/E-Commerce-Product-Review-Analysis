@@ -668,7 +668,7 @@ def poly_ridge_prediction(df):
 def random_forest_prediction(df):
     fig, ax = plt.subplots(figsize=(6, 6))
     fig.patch.set_facecolor("#0e1117")
-    ax.set_facecolor("#5a5a5a")
+    ax.set_facecolor("#1e1e1e")
 
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
