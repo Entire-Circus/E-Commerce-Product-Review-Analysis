@@ -26,7 +26,7 @@ st.markdown(
 # Eda Header
 st.header("1. Exploratory Data Analysis (EDA)")
 st.write("""Disclaimer: All visualizations in this project up to predictive modeling were created using Plotly to provide interactive exploration capabilities (e.g., zoom, tooltip, filtering). A logarithmic scale was applied to improve clarity when visualizing data with large value disparities across groups. 
-    "Log scales show relative differences rather than absolute, making it easier to interpret patterns in skewed data. """)
+    Log scales show relative differences rather than absolute, making it easier to interpret patterns in skewed data. """)
 st.markdown("---")
 
 # 1. Unique products with total category (and variants)
@@ -52,7 +52,7 @@ st.markdown("---")
 
 
 # 2. Unique products by subcategory
-st.header("1.2 Dominant Product Subcategories") # Changed header
+st.header("1.2 Dominant Product Subcategories") 
 fig = plot_products_by_subcategory(df_main)
 fig = plot_preset(fig)
 fig.update_layout(height=850)
@@ -73,16 +73,14 @@ fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("This visualization helps highlight which categories command higher average prices.")
 st.markdown("""
-**Insight:** 'Men's' products are the most expensive on average 116.65, followed by 'Woman's' 91.67. 'Accessories' are the most affordable 23.25, indicating distinct pricing strategies across categories.
-""") 
+**Insight:** Men’s products have the highest average price (116.65), followed by Women’s (91.67), while Accessories are the most affordable (23.25). This suggests deliberate positioning in premium vs. budget segments.""") 
 
 fig = price_distribution_by_category(df_variants)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("This violin plot shows that most categories are evenly distributed and have a wide range, except for Kids 49-59 and Accessories 10-50.")
 st.markdown("""
-**Insight:** While most categories exhibit wide price ranges, 'Kids' and 'Accessories' show highly concentrated distributions. 'Kids' products primarily fall between 49-59, and 'Accessories' between 10-50, suggesting specific target price points for these segments.
-""") 
+**Insight:** Most categories show broad price variability, but Kids and Accessories stand out with tightly clustered prices — typically 49–59 and 10–50 respectively — implying more standardized pricing within these lines.""") 
 
 fig = price_distribution_by_category_binned(df_variants)
 fig = plot_preset(fig)
@@ -90,7 +88,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.write("This plot shows how each category is distributed across different price tiers")
 st.markdown("""
 **Insight:** The majority of 'Men's' products (45 out of 214 are in the >100 price bin. In contrast, 'Accessories' are exclusively in the <50 bins. This bin analysis confirms distinct pricing strategies and market segments for each product category.
-""") # Removed div for styling
+""") 
 st.markdown("---")
 
 
@@ -99,34 +97,36 @@ st.header("1.4 Overall Customer Rating Trend") # Changed header
 fig = plot_distribuion_of_reviews_by_rating(df_main)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
-st.write("This chart shows that the majority of user reviews are clustered at the higher end of the rating scale (4–5 star review), suggesting either strong product satisfaction or rating inflation. Analysis of the raw data revealed that ratings below 3.5 had a negligible number of associated reviews, leading to a highly stretched and uninformative visualization when viewed in its entirety. To enhance clarity and highlight the ratings with significant user engagement, viewers can focus on rating range from 3.5 to 5.0  utilizing the interactive features of the Plotly graph.")
+st.write("""This chart illustrates that the majority of products have high average ratings, typically clustered between 4.0 and 5.0.
+          Since the data reflects per-product average ratings, not individual reviews, the visualization shows the distribution of product-level satisfaction.
+         Products with average ratings below 3.5 are extremely rare, making the full scale (1–5) visually sparse and unbalanced. To improve readability and focus on meaningful segments, the interactive Plotly chart allows viewers to zoom into the 3.5–5.0 range, where the bulk of rated products reside.
+         """)
 st.markdown("""
-**Insight:** Product average ratings are overwhelmingly positive, with most products averaging a 4.3 rating. Average ratings below 3.6 are nearly non-existent (only 173 products), indicating high overall customer satisfaction.
-""") # Removed div for styling
+**Insight:** Product-level ratings are overwhelmingly positive — most items average around 4.3 stars, and only 173 products fall below a 3.6 average. This pattern suggests strong general customer satisfaction or potential rating inflation across the catalog.""") 
 st.markdown("---")
 
 
 # 5. Most reviewed products
-st.header("1.5 Top Products by Customer Engagement") # Changed header
+st.header("1.5 Top Products by Customer Engagement") 
 fig = plot_top10_most_review_products(df_main)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
-st.write("This chart identifies the top 10 most reviewed products, indicating high popularity and customer engagement for these items.")
+st.write("This chart identifies the top 10 most reviewed products allong with categories the ybelong to, indicating high popularity and customer engagement for these items.")
 st.markdown("""
 **Insight:** 'Maxima-r' and 'Possession' from the 'Woman-sneakers' subcategory are the most popular products by review count. The top 10 is predominantly 'Woman's' products (sandals, boots, sneakers, platforms), confirming their market dominance.
-""") # Removed div for styling
+""") #
 st.markdown("---")
 
 
 # 6. Size/Experience/Verified feedback
-st.header("1.6 Deep Dive into Customer Feedback Types") # Changed header
+st.header("1.6 Deep Dive into Customer Feedback Types") 
 col1, col2 = st.columns(2)
 
 with col1:
     fig1 = distribution_of_size_related_feedback(df_main)
     fig1 = plot_preset(fig1)
-    fig1.update_layout(width=800, height=550)  # Explicit width and height
-    st.plotly_chart(fig1, use_container_width=False)  # Disable auto-width
+    fig1.update_layout(width=800, height=550)  
+    st.plotly_chart(fig1, use_container_width=False)  
     st.write("This chart illustrates the distribution of size-related feedback, highlighting how users perceive the fit of products (e.g., true to size, too big, too small).")
     st.markdown("""
     **Insight:** While ~11,000 users are satisfied with sizing ('True to Size'), 6,306 reported issues are split between 'Too Big' and 'Small' and others 2,111 between 'Too small' and 'Big'. This highlights sizing as a significant area for potential product improvement.
@@ -138,18 +138,21 @@ with col2:
     fig2 = plot_preset(fig2)
     fig2.update_layout(width=700, height=525)
     st.plotly_chart(fig2, use_container_width=False)
-    st.write("Analysis of Experience related feedback suggests that users don't utilize this metric enough when leaving feedback as overwhelming majority 18464 didn't leave any while only 3263 users left experience feedbakc from which majority highlight stylisg 1355 and comfort 1037 with qulity beein last at 871")
-    st.markdown("""
-    **Insight:** Experience feedback is underutilized (18,464 users left none). Among those who did, 'Stylish' (1,355) and 'Comfort' (1,037) are the most common positive attributes, while 'Quality' (871) is less frequently mentioned. This suggests opportunities to encourage more specific feedback.
-    """) 
-
-st.subheader("Verified Reviewer Status") # New subheader for clarity
-st.write("""
-"The distribution of verification statuses is heavily skewed, with 18,379 users identified as Verified Buyers, 569 as Verified Reviewers, and 1,243 as Unverified users."
-""")
+st.write(
+    """This chart shows the distribution of experience-related feedback tags, based on user input. It reflects how often users described products as 'Stylish', 'Comfortable', or 'High Quality'. The chart also emphasizes that most users did not leave any experience-related feedback at all."""
+)
 st.markdown("""
-**Insight:** A strong majority (18,379 users) are 'Verified Buyers', lending significant credibility to the reviews. Only a small fraction (1,243) are unverified, reinforcing trust in the feedback system.
-""") 
+**Insight:** Experience feedback is largely underused — 18,464 users skipped it entirely. Among the 3,263 who did engage, 'Stylish' (1,355) and 'Comfort' (1,037) dominate, while 'Quality' (871) lags behind. This suggests that users prioritize looks and comfort in their feedback, and there’s room to encourage more detailed engagement in this section.
+""")
+
+st.subheader("Verified Reviewer Status") 
+st.write(
+    """The verification data shows a strong imbalance across user types: 18,379 are Verified Buyers, 569 are Verified Reviewers, and 1,243 are Unverified. This suggests that most reviews originate from confirmed purchasers.
+"""
+)
+st.markdown("""
+**Insight:** The overwhelming presence of 'Verified Buyers' significantly boosts the credibility of the review dataset. With unverified users making up only a small fraction, the overall trustworthiness of the feedback is high.
+""")
 st.markdown("---")
 
 
@@ -159,9 +162,8 @@ fig = normalized_size_feedback_by_product_category(df_main)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("This visualization compares how users perceive sizing across product categories.")
-st.markdown("""
-**Insight:** 'Men's' products have the highest satisfaction with sizing (61.1% 'True to Size'), while 'Clothing' has the lowest (43.1%). 'Too Big' is the most common complaint across most categories, except 'Woman's' where 'Small' is more prevalent. This highlights category-specific fit challenges.
-""") 
+st.markdown("""**Insight:** Sizing satisfaction is highest in the 'Men’s' category (61.1% report 'True to Size'), while 'Clothing' shows the lowest agreement (43.1%). Across most categories, 'Too Big' is the dominant complaint — except in 'Women’s', where more users report items as 'Small'. This points to category-specific fit issues that may require targeted sizing adjustments.
+""")
 st.markdown("---")
 
 
@@ -172,8 +174,7 @@ fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("This plot reveals how categories differ in both popularity and customer satisfaction. Using a log scale for review counts helps reduce skew caused by highly reviewed categories, while displaying the average rating directly on each bar maintains clarity.")
 st.markdown("""
-**Insight:** 'Woman's' category dominates review volume (43,000 reviews), significantly more than others. 'Handbags' boast the highest average rating (4.87). While 'Woman's' has the lowest average rating (4.56), this is likely due to its massive review count, demonstrating robust satisfaction across all categories.
-""") 
+**Insight:** The 'Women’s' category accounts for the majority of reviews (~43,000), far surpassing all others. Despite having the lowest average rating (4.56), this likely reflects its large volume rather than poor performance. In contrast, 'Handbags' achieve the highest average rating (4.87), suggesting consistently strong user satisfaction across smaller, more focused categories.""") 
 st.markdown("---")
 
 # NLP header 
@@ -198,7 +199,8 @@ with col2:
     fig = bert_pie(df_reviews)
     fig = plot_preset(fig)
     st.plotly_chart(fig, use_container_width=True)
-st.write("This comparison highlights a consistently positive customer sentiment across both directly assigned user ratings and AI-driven analysis. The overwhelming majority of reviews fall into the positive sentiment categories, reinforcing strong product satisfaction.However, AI score shows a decrease in positive rating, which might hint on a more nuanced sentiment subtly expressed by users that isn't fully captured in their direct numerical rating. ")
+st.write("""This comparison reveals consistently positive customer sentiment in both user-assigned ratings and AI-driven sentiment analysis. While the majority of reviews are classified as positive in both cases, the AI model shows a slight drop in positivity. This may indicate more nuanced or mixed emotions expressed in the text that aren't fully reflected in the numerical ratings, suggesting that users sometimes rate generously even when their wording is more reserved.
+""")
 st.markdown("---")
 
 # 2 Heatmap
@@ -207,9 +209,8 @@ fig = mismatch_heatmap(df_reviews)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("""While 5-star reviews largely align with positive textual sentiment, significant divergence occurs elsewhere. 
-    User 1-star reviews often reflect 2-star textual sentiment, and user 5-star reviews often reflect 4-star text. 
-    This highlights that numerical ratings are often more polarized than the nuanced sentiment in written feedback, pinpointing areas for deeper analysis of customer experience.
-          """)
+   While 5-star reviews generally align with highly positive textual sentiment, notable discrepancies appear in other ratings. For instance, many 1-star reviews reflect only mildly negative (2-star) sentiment, while some 5-star reviews correspond to 4-star sentiment in text. This suggests that user-assigned ratings tend to be more polarized than the actual language used, highlighting the value of analyzing review content beyond star scores to fully understand customer experience.
+    """)
 st.markdown("---")
 
 # 3. Mismatch comparison by category
@@ -217,9 +218,7 @@ st.header("2.3 Mismatch Analysis Between User Scores and BERT Sentiment by Categ
 fig = mismatch_by_category(df_reviews)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
-st.write("""While 'Woman's' has the most mismatched reviews due to high volume, categories like 'Men's' show a proportionally higher rate of sentiment discrepancies. 
-    This indicates that reviews in these categories may contain more nuanced or mixed sentiments, offering valuable areas for deeper textual analysis and product insight.
-    """)
+st.write("""While the 'Women’s' category has the highest number of mismatched reviews due to its large volume, categories like 'Men’s' exhibit a proportionally higher rate of sentiment mismatches. This suggests that reviews in these categories may carry more nuanced or mixed signals, making them valuable targets for deeper text-based analysis and product improvement opportunities.""")
 st.markdown("---")
 
 # 4 Mismatch size feedback
@@ -227,9 +226,8 @@ st.header("2.4 Mismatch size")
 fig = mismatch_size_feedback(df_reviews)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
-st.write("""Customers generally rate higher than the sentiment expressed in their text, especially for sizing issues like 'Big', 'Small', and 'Too Big'. 
-    'Too Small' feedback consistently shows the lowest sentiment. This highlights that numerical ratings may mask dissatisfaction with product fit, indicating areas for sizing improvement.
-    """)
+st.write("""While the 'Women’s' category has the highest number of mismatched reviews due to volume, categories like 'Men’s' show a proportionally greater rate of sentiment discrepancies. This points to more nuanced or conflicted opinions within those reviews. Interestingly, many users still give high ratings despite mentioning sizing issues — except in cases marked as 'Too Small', which appears to be the most negatively impactful fit issue. These patterns emphasize the need to evaluate written feedback alongside star ratings for a fuller understanding of customer sentiment.
+""")
 st.markdown("---")
 
 # 5 Review length
@@ -240,17 +238,15 @@ with col1:
     fig = review_length(df_reviews)
     fig = plot_preset(fig)
     st.plotly_chart(fig, use_container_width=True)
-    st.write("""Most customer reviews are concise, with a median length of around 120 characters. 
-    This indicates customers prefer providing brief, focused feedback, which is also beneficial for consistent NLP analysis.
- """)
+
 
 with col2:
     fig = review_length_by_category(df_reviews)
     fig = plot_preset(fig)
     st.plotly_chart(fig, use_container_width=True)
-    st.write("""Average review length differs by product category. Customers write longer reviews for 'Woman's' and 'Clothing' items, suggesting more detailed feedback. 
-    Conversely, reviews for 'Handbags' and 'Accessories' are typically more concise. This insight helps prioritize where to seek deeper textual insights.
-   """)
+
+st.write("""These plots show sentiment distribution across key product aspects from two perspectives: absolute counts and percentage breakdowns. Aspects like 'style_and_appearance' and 'comfort' lead in positive review volume, reflecting strong customer satisfaction. However, 'size_and_fit' stands out with the highest number of neutral and negative responses — both in absolute terms and percentage — indicating consistent issues with product fit. Notably, 'style_and_appearance' also has the second-highest count of neutral and negative reviews in absolute terms, though its overall sentiment remains highly positive when viewed proportionally. While most aspects maintain over 80% positive sentiment, 'delivery' shows the highest percentage of negative feedback (~15%), highlighting sizing and logistics as the most commonly mentioned areas of dissatisfaction despite the general positivity.
+""")
 st.markdown("---")    
 
 # 6 ABSA
@@ -291,11 +287,8 @@ fig = aspects_shoe(shoe_aspects_df)
 fig = plot_preset(fig)
 st.plotly_chart(fig, use_container_width=True)
 st.write("""
-This plot provides a granular look at sentiment specifically by shoe type. 
-'Boots', 'heels', 'sandals', and 'sneakers' exhibit strong positive review counts, indicating high satisfaction within these popular categories. 
-Conversely, 'Flats' show a more mixed sentiment profile with noticeable negative and neutral counts relative to their positive reviews. 
-This detailed breakdown helps pinpoint specific footwear categories for targeted product and service improvements.
-""")
+This plot offers a detailed breakdown of sentiment across individual shoe types. Categories like 'Boots', 'Heels', 'Sandals', and 'Sneakers' receive consistently high volumes of positive reviews, reflecting strong customer satisfaction in these popular segments. In contrast, 'Flats' show a more balanced sentiment distribution, with relatively higher proportions of neutral and negative feedback. This granularity helps identify specific footwear categories that may benefit from closer attention and targeted improvements.
+         """)
 st.markdown("---")
 
 # 7 BERTopic
@@ -322,11 +315,9 @@ fig.update_layout(
         margin=dict(b=150, t=80)
     )
 st.plotly_chart(fig, use_container_width=True)
-st.write("""Customer sentiment is highly positive overall across product attributes like 'Style & Appearance' and 'Comfort'. However, specific areas like 'Delivery' and 'Size & Fit' show proportionally more neutral or negative feedback in general.
-
-Analysis by shoe type reveals varying sentiment: 'Boots' and 'Sneakers' are very strong, while 'Flats' show a more mixed sentiment profile.
-
-BERTopic analysis further uncovers key themes: most topics are overwhelmingly positive (e.g., General Product Praise, Footwear Comfort), but topics related to 'Discomfort & Foot Pain' or 'Foot Width & Fit Issues' show higher negative/neutral sentiment. This multi-layered insight pinpoints precise areas for product improvement and service optimization across your catalog.
+st.write("""Customer sentiment is overwhelmingly positive across core product attributes like 'Style & Appearance' and 'Comfort'. However, certain areas such as 'Delivery' and 'Size & Fit' receive a noticeably higher share of neutral and negative feedback.
+Sentiment analysis by shoe type shows variation: 'Boots' and 'Sneakers' perform particularly well, while 'Flats' receive more mixed feedback, indicating potential fit or comfort concerns.
+BERTopic analysis further uncovers key themes behind the reviews. While most topics—such as general product praise and footwear comfort—are strongly positive, others like 'Discomfort & Foot Pain' and 'Foot Width & Fit Issues' exhibit elevated levels of negative or neutral sentiment. Together, these layered insights highlight clear opportunities for targeted product improvements and service enhancements across the catalog.
 """)
 st.markdown("---")
 
@@ -344,24 +335,21 @@ st.header("3.1 Model Performance: Actual vs. Predicted Sales")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    # This function call will load your plot
     poly_ridge_prediction(poly_ridge_prediction_df)
-    st.write("This chart illustrates the performance of the Polynomial Ridge Regression model by comparing its predicted sales against the actual sales figures.")
-    st.markdown("**Insight:** The Polynomial Ridge model effectively captures both linear and complex non-linear relationships, offering detailed insights into how various factors, including their interactions, influence sales.")
+    st.write("This chart compares predicted vs. actual sales using the Polynomial Ridge Regression model.")
+    st.markdown("**Insight:** Polynomial Ridge captures both linear and non-linear relationships, revealing how combined feature effects (like price and holiday timing) influence sales outcomes.")
     st.markdown("---")
 
 with col2:
-    # This function call will load your plot
     random_forest_prediction(random_forest_prediction_df)
-    st.write("This chart displays the Random Forest Regressor's accuracy by showing the alignment between predicted and actual sales data.")
-    st.markdown("**Insight:** The Random Forest model demonstrates robust predictive accuracy, with its predictions closely aligning with actual sales, indicating strong reliability for sales forecasting.")
+    st.write("This chart evaluates Random Forest model accuracy by comparing its predicted and actual sales values.")
+    st.markdown("**Insight:** Random Forest delivers strong predictive performance, with close alignment between actual and predicted values—proving useful for reliable forecasting.")
     st.markdown("---")
 
 with col3:
-    # This function call will load your plot
     xgboost_prediction(xgboost_prediction_df)
-    st.write("This chart visualizes the superior performance of the XGBoost Regressor, comparing its highly accurate sales predictions against actual values.")
-    st.markdown("**Insight:** XGBoost exhibits the highest predictive accuracy among the models, providing exceptionally precise sales forecasts critical for strategic business decisions.")
+    st.write("This chart shows how well XGBoost predicts sales, demonstrating minimal error compared to actual sales.")
+    st.markdown("**Insight:** XGBoost achieves the highest predictive accuracy, making it ideal for critical business forecasting and decision support.")
     st.markdown("---")
 
 st.header("3.2 Key Sales Drivers: Feature Importance Analysis")
@@ -369,26 +357,24 @@ st.header("3.2 Key Sales Drivers: Feature Importance Analysis")
 left, center, right = st.columns([1, 2, 1])
 
 with center:
-    st.subheader("Polynomial Ridge Feature Contributions")
-    # This function call will load your plot
+    st.subheader("Polynomial Ridge: Feature Contributions")
     plot_poly_ridge_features(poly_ridge_features)
-    st.write("This chart presents the coefficients and their impact on sales within the Polynomial Ridge model, highlighting non-linear and interaction effects.")
-    st.markdown("**Insight:** Polynomial Ridge uniquely reveals that the influence of certain factors on sales is not always straightforward. For instance, the optimal price point or how discounts combine with holiday events can be crucial for maximizing sales.")
+    st.write("This chart highlights how each feature contributes to sales in the Polynomial Ridge model, including interaction and curved relationships.")
+    st.markdown("**Insight:** This model reveals complex behaviors—for example, the impact of price or discounts may depend on timing like holiday promotions.")
     st.markdown("---")
 
-    st.subheader("Random Forest Feature Importance")
-    # This function call will load your plot
+    st.subheader("Random Forest: Feature Importance")
     plot_random_forest_features(random_forest_features)
-    st.write("This chart ranks features by their importance in the Random Forest model, indicating their contribution to sales prediction accuracy.")
-    st.markdown("**Insight:** Random Forest underscores that average price, weekday, and holiday events are consistently the most significant factors driving sales, affirming their importance for targeted business strategies.")
+    st.write("This chart ranks the most influential variables in the Random Forest model for predicting sales.")
+    st.markdown("**Insight:** Average price, weekday, and holiday events emerge as dominant sales drivers, validating their role in strategic planning.")
     st.markdown("---")
 
-    st.subheader("XGBoost Feature Importance")
-    # This function call will load your plot
+    st.subheader("XGBoost: Feature Importance")
     plot_xg_boost_features(xgboost_features)
-    st.write("This chart illustrates the relative importance of features in the XGBoost model, showing which variables contribute most to accurate sales forecasts.")
-    st.markdown("**Insight:** XGBoost reinforces that holiday events, advertising status, and average price are top drivers. Leveraging these insights allows for optimized marketing campaigns, pricing, and promotional efforts.")
+    st.write("This chart shows which features most strongly influence XGBoost's predictions of sales outcomes.")
+    st.markdown("**Insight:** XGBoost highlights holiday events, ad status, and price as top predictors—supporting highly targeted marketing and pricing strategies.")
     st.markdown("---")
+
 
 # Model metrics comparison
 data = {
@@ -400,34 +386,37 @@ data = {
 }
 
 metrics_df = pd.DataFrame(data)
-st.subheader("3.3 Comparative Model Performance Metrics") # Adjusted subheader
+st.subheader("3.3 Comparative Model Performance Metrics")
 st.dataframe(metrics_df, height=200, width=400)
 st.markdown("**Insight:** XGBoost demonstrates superior performance across all evaluation metrics (highest R² and lowest errors), making it the most reliable choice for sales forecasting within this analysis.")
 
-st.write("---") # Separator for new section
+st.write("---") 
 st.header("3.4 Overall Business Insights from Predictive Modeling")
 st.write("""
-    Based on our predictive modeling analysis, several critical insights emerge for optimizing sales strategies:
+Based on our predictive modeling analysis, several key insights emerge to support data-driven sales optimization:
 
-    * **Data-Driven Forecasting with High Accuracy:** The **XGBoost model** stands out as highly accurate (R²=0.975), providing a robust and reliable tool for forecasting sales. This empowers businesses to move from guesswork to data-backed predictions for future planning, leading to more confident decision-making.
+* **High-Accuracy Forecasting:** The **XGBoost model** demonstrates outstanding accuracy (R² = 0.975), offering a reliable tool for forecasting sales. This enables a shift from intuition-based decisions to confident, data-backed planning.
 
-    * **Identified Key Sales Levers:** Our models consistently highlight that **pricing (`avg_price`, `discount_percent`), promotional activities (`ad_status`, `holiday_event`), customer satisfaction (`rating`), and timing (`weekday`)** are the most influential factors driving sales.
-        * **Strategic Pricing & Promotions:** We observe that higher average prices generally lead to lower sales, while discounts significantly boost them. The analysis also suggests that the optimal price might not be a simple linear relationship, and that discounts are particularly effective when synergized with holiday events. This allows for highly dynamic and profitable pricing strategies that adapt to market conditions and special periods.
-        * **Effective Marketing Channels:** Active advertising campaigns and leveraging holiday periods are strongly correlated with increased sales. This insight clearly indicates where marketing efforts and budget should be concentrated for maximum return on investment.
-        * **Customer-Centric Approach Pays Off:** Product ratings directly influence sales, underscoring the paramount importance of prioritizing product quality and exceptional customer service to foster positive reviews and build brand loyalty.
-        * **Optimized Operations Through Timing:** Understanding the distinct sales patterns throughout the week (`weekday`) allows businesses to optimize inventory levels, staffing arrangements, and logistics, ensuring resources are perfectly aligned with anticipated demand fluctuations.
+* **Key Drivers of Sales Identified:** Across all models, the most influential factors include:
+    * **Pricing & Discounts:** Higher prices tend to reduce sales, while discounts significantly boost them—especially when combined with holiday events. This supports the use of dynamic pricing strategies tailored to market timing.
+    * **Marketing Effectiveness:** Active ads (`ad_status`) and holiday-driven campaigns (`holiday_event`) are strongly associated with sales growth, highlighting where to focus marketing budgets for maximum ROI.
+    * **Customer Satisfaction:** Higher product ratings directly correlate with increased sales, emphasizing the importance of quality, service, and encouraging positive feedback.
+    * **Sales Timing:** Weekly sales patterns (`weekday`) provide opportunities to optimize staffing, logistics, and inventory based on predictable demand fluctuations.
 
-    * **Unveiling Nuanced Relationships:** While powerful ensemble models like XGBoost provide excellent predictions, the Polynomial Ridge model offers unique value by revealing **complex non-linear effects and variable interactions**. This means that the impact of one factor might change significantly based on another (e.g., ad effectiveness during holidays), enabling the development of more sophisticated and synergistic business strategies that capture hidden opportunities.
+* **Nonlinear Effects Revealed:** While XGBoost offers predictive power, the **Polynomial Ridge model** adds interpretability by capturing **non-linear effects and variable interactions**—such as how discounts behave differently during promotions—offering valuable context for strategic planning.
 
-    * **Actionable Intelligence for Growth:** These combined insights provide an actionable framework for comprehensive business decision-making, including streamlined inventory management, optimized marketing budget allocation, dynamic pricing adjustments, and overall efficient operational planning.
+* **Actionable Business Value:** These insights inform real-world strategies across:
+    - Inventory and logistics optimization
+    - Marketing and ad spend efficiency
+    - Customer experience management
+    - Dynamic pricing and promotion planning
 
-    **Important Note:** As previously stated, all sales data and related variables used in these models are simulated. However, the methodology and the types of actionable insights derived are directly applicable to real-world sales data once available, providing a strong foundation for a data-driven business strategy.
-    
-    **Interactive Sales Prediction in this Dashboard:**
-    This dashboard is equipped to provide real-time sales predictions, allowing for immediate "what-if" scenario analysis. Users can interact with the prediction capabilities in two ways:
+**Note:** While the underlying sales data is simulated, the modeling approach and resulting insights are directly transferable to real-world datasets, providing a solid foundation for future analytics-driven decision-making.
+""")
+st.header("**Interactive Sales Prediction in this Dashboard:**")
+st.wtire(""" This dashboard is equipped to provide real-time sales predictions, allowing for immediate "what-if" scenario analysis. Users can interact with the prediction capabilities in two ways:
     1.  **Bulk Prediction (CSV Upload):** Upload a CSV file containing new product data (with features like price, rating, discount, etc.) to receive sales predictions for all entries at once. This is ideal for forecasting sales across a large product catalog or for future inventory planning.
     2.  **Single Prediction (Manual Input):** Manually input specific values for each sales driver (e.g., average price, whether it's a holiday, discount percentage) directly into the dashboard. This allows for quick, on-the-fly forecasts for individual products or hypothetical scenarios to assess the potential impact of changing specific variables.
-     
 """)
 # Subcategory dropdown
 subcategory_options = [

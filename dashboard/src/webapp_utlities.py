@@ -673,7 +673,7 @@ def random_forest_prediction(df):
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
             [df["Actual Sales"].min(), df["Actual Sales"].max()],
-            "r--", label="Perfect Prediction")
+            "r--", label="Perfect Prediction (y=x)")
 
     ax.set_xlabel("Actual Sales", color="#f0f0f0")
     ax.set_ylabel("Predicted Sales", color="#f0f0f0")
@@ -692,7 +692,7 @@ def xgboost_prediction(df):
     sns.scatterplot(data=df, x="Actual Sales", y="Predicted Sales", ax=ax)
     ax.plot([df["Actual Sales"].min(), df["Actual Sales"].max()],
             [df["Actual Sales"].min(), df["Actual Sales"].max()],
-            "r--", label="Perfect Prediction")
+            "r--", label="Perfect Prediction (y=x)")
 
     ax.set_xlabel("Actual Sales", color="#f0f0f0")
     ax.set_ylabel("Predicted Sales", color="#f0f0f0")
