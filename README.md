@@ -67,9 +67,9 @@ This project uses that scraped data for in-depth analysis, sentiment extraction,
    - **Live demo:** [Try the dashboard here](https://e-commerce-analysis-dashboard.onrender.com)
   
 7. **Full Technical Report**  
-   - 📄 [Comprehensive E-commerce Data Analysis (PDF)](link)  
    - Supplementary document detailing the full analytical workflow, advanced feature engineering, and modeling rationale  
    - Includes extended visualizations, deeper sentiment diagnostics, and strategic business recommendations beyond the dashboard scope
+   - [Comprehensive E-commerce Data Analysis (PDF)](link)  
 
 ---
 
