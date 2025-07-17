@@ -31,7 +31,9 @@ sections = {
     "3. Predictive Modeling": "section-3",
     "4. Interactive Sales Prediction": "section-4"
 }
-choice = st.sidebar.radio("Jump to section", list(sections.keys()))
+st.sidebar.markdown("## Navigation")
+for title, anchor in sections.items():
+    st.sidebar.markdown(f"- [{title}](#{anchor})")
 
 # Eda Header
 st.header("1. Exploratory Data Analysis (EDA)", anchor=sections["1. Exploratory Data Analysis (EDA)"])
@@ -423,7 +425,7 @@ Based on our predictive modeling analysis, several key insights emerge to suppor
 
 **Note:** While the underlying sales data is simulated, the modeling approach and resulting insights are directly transferable to real-world datasets, providing a solid foundation for future analytics-driven decision-making.
 """)
-st.header("**Interactive Sales Prediction:**", anchor=sections["4. Interactive Sales Prediction"])
+st.header("**4. Interactive Sales Prediction:**", anchor=sections["4. Interactive Sales Prediction"])
 st.write(""" This dashboard is equipped to provide real-time sales predictions, allowing for immediate "what-if" scenario analysis. Users can interact with the prediction capabilities in two ways:
     1.  **Bulk Prediction (CSV Upload):** Upload a CSV file containing new product data (with features like price, rating, discount, etc.) to receive sales predictions for all entries at once. This is ideal for forecasting sales across a large product catalog or for future inventory planning.
     2.  **Single Prediction (Manual Input):** Manually input specific values for each sales driver (e.g., average price, whether it's a holiday, discount percentage) directly into the dashboard. This allows for quick, on-the-fly forecasts for individual products or hypothetical scenarios to assess the potential impact of changing specific variables.
