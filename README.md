@@ -19,7 +19,7 @@ The product, review, and variant data used in this analysis was sourced via a cu
 - See the scraping tool: [Web Scraper GitHub Repository]([https://github.com/Entire-Circus/Shopify-scraper])
 - Scraped data includes product-level data: category, name, size etc., review data: review header, review text, feedback,  and variant-level data: price, color, full product name, etc.
 
-This dashboard project uses that scraped data for in-depth analysis, sentiment extraction, and predictive modeling.
+This project uses that scraped data for in-depth analysis, sentiment extraction, and predictive modeling.
 
 ---
 
