@@ -4,6 +4,17 @@ A data analysis project exploring product trends, pricing dynamics, customer sen
 
 ---
 
+## Table of Contents
+
+- [Project Intent](#project-intent)
+- [Data Collection](#data-collection)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Sample Visuals](#sample-visuals)
+- [Results Summary](#results-summary)
+
+---
+  
 ## **Project Intent**
 
 This project combines analytical depth with practical presentation. While the full technical report details the complete workflow — including data preparation, exploratory analysis, natural language processing, and predictive modeling — the accompanying dashboard offers a **concise, interactive overview** of the key insights and results.
