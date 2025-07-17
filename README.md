@@ -53,7 +53,7 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 - **NLP**: spaCy, TextBlob, transformers (BERT), wordcloud  
 - **Modeling**: scikit-learn  
 - **Web App**: Streamlit  
-- **Deployment**: Streamlit Cloud
+- **Deployment**: Docker container hosted on Render
 
 ---
 
@@ -62,11 +62,13 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 <details>
 <summary>Click to expand</summary>
 
-- Price vs Rating distribution by subcategory  
-- Sentiment mismatch heatmaps by product category  
-- Wordclouds for positive and negative review themes  
-- Model performance bar charts  
-- Interactive filters in dashboard
+- ![Unique Products vs Total Products](plot_examples/unique_products_vs_total_variants.png)
+- ![Top 10 Most Reviewed Products](plot_examples/top10_most_reviwed_products.png)
+- ![Average Price by Category](plot_examples/average_price_by_category.png)
+- ![BERT Score Distribution](plot_examples/bert_score_distribution.png)
+- ![Aspects Sentiment Breakdown](plot_examples/bert_score_distribution.png)
+- ![XGBoost Actual vs PRedicted Sales](plot_examples/xgboost_sales.png)
+- ![XGBoost Feature Importance](plot_examples/xgboost_features.png)
 
 </details>
 
@@ -74,10 +76,12 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 
 ## Results Summary
 
-- Identified subcategories with significant mismatches between star ratings and review sentiment  
-- Demonstrated clear patterns in review volume and satisfaction trends  
-- Built and compared multiple predictive models with solid accuracy  
-- Delivered a fully functional dashboard with insights and prediction capabilities
+- Performed comprehensive Exploratory Data Analysis (EDA) to identify key product subcategories, pricing patterns, and customer behavior trends  
+- Applied Natural Language Processing (NLP) techniques to analyze review sentiments, uncovering gaps between star ratings and textual feedback for deeper customer insights  
+- Built, evaluated, and compared advanced predictive models (Polynomial Ridge, Random Forest, XGBoost) delivering highly accurate sales forecasts  
+- Identified critical sales drivers such as pricing, promotions, customer ratings, and timing, enabling targeted business strategies  
+- Developed an interactive, business-focused dashboard integrating data exploration, sentiment analysis, and sales prediction to empower informed decision-making  
+- Provided actionable intelligence for optimizing marketing, pricing, inventory management, and customer engagement efforts  
 
 ---
 
