@@ -62,13 +62,13 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 <details>
 <summary>Click to expand</summary>
 
-- ![Unique Products vs Total Products](plot_examples/Unique products vs Total variants.png)
-- ![Top 10 Most Reviewed Products]
-- ![Average Price by Category]
-- ![BERT Score Distribution]
-- ![Aspects Sentiment Breakdown]
-- ![XGBoost Actual vs PRedicted Sales]
-- ![XGBoost Feature Importance]
+- ![Unique Products vs Total Products](plot_examples/unique_products_vs_total_variants.png)
+- ![Top 10 Most Reviewed Products](plot_examples/top10_most_reviwed_products.png)
+- ![Average Price by Category](plot_examples/average_price_by_category.png)
+- ![BERT Score Distribution](plot_examples/bert_score_distribution.png)
+- ![Aspects Sentiment Breakdown](plot_examples/bert_score_distribution.png)
+- ![XGBoost Actual vs PRedicted Sales](plot_examples/xgboost_sales.png)
+- ![XGBoost Feature Importance](plot_examples/xgboost_features.png)
 
 </details>
 
