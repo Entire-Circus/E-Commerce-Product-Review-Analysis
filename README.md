@@ -62,11 +62,13 @@ The dashboard is intended as the primary touchpoint for reviewing outcomes and e
 <details>
 <summary>Click to expand</summary>
 
-- Price vs Rating distribution by subcategory  
-- Sentiment mismatch heatmaps by product category  
-- Wordclouds for positive and negative review themes  
-- Model performance bar charts  
-- Interactive filters in dashboard
+- ![Unique Products vs Total Products](plot_examples/Unique products vs Total variants.png)
+- ![Top 10 Most Reviewed Products]
+- ![Average Price by Category]
+- ![BERT Score Distribution]
+- ![Aspects Sentiment Breakdown]
+- ![XGBoost Actual vs PRedicted Sales]
+- ![XGBoost Feature Importance]
 
 </details>
 
