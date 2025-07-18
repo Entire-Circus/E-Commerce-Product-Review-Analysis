@@ -100,7 +100,7 @@ This project uses that scraped data for in-depth analysis, sentiment extraction,
 - ![Top 10 Most Reviewed Products](plot_examples/top10_most_reviwed_products.png)
 - ![Average Price by Category](plot_examples/average_price_by_category.png)
 - ![BERT Score Distribution](plot_examples/bert_score_distribution.png)
-- ![Aspects Sentiment Breakdown](plot_examples/aspect_sentiment_breakdown.png)
+- ![Aspects Sentiment Breakdown](plot_examples/aspects_sentiment_breakdown.png)
 - ![XGBoost Actual vs PRedicted Sales](plot_examples/xgboost_sales.png)
 - ![XGBoost Feature Importance](plot_examples/xgboost_features.png)
 
