@@ -24,7 +24,6 @@ st.markdown(
     """
 )
 # Sidebar Navigation
-st.sidebar.title("Navigation")
 sections = {
     "1. Exploratory Data Analysis (EDA)": "section-1",
     "2. Natural Language Processing (NLP)": "section-2",
