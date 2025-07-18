@@ -23,7 +23,7 @@ A data analysis project exploring product trends, pricing dynamics, customer sen
   
 ## **Project Intent**
 
-This project combines analytical depth with practical presentation. While the full technical report details the complete workflow — including data preparation, exploratory analysis, natural language processing, and predictive modeling — the accompanying dashboard offers a **concise, interactive overview** of the key insights and results.
+This project prioritizes interactive insight delivery through a live dashboard, which presents a concise summary of key results from exploratory analysis, NLP, and predictive modeling. For those seeking technical depth, a full report is also available, detailing the analytical workflow and modeling techniques.
 
 The dashboard is intended as the primary touchpoint for reviewing outcomes and exploring patterns, while the report provides a deeper look into the underlying methods and decisions supporting the analysis.
 
